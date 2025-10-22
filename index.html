@@ -5,84 +5,188 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Demo Buttons</title>
     <style>
-        * {
-            margin: 0;
+        /* From Uiverse.io by MuhammadHasann */
+        .container-button {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            grid-template-areas: "bt-1 bt-2 bt-3"
+    "bt-4 bt-5 bt-6";
+            position: relative;
+            perspective: 800;
             padding: 0;
-            box-sizing: border-box;
+            width: 135px;
+            height: 47px;
+            transition: all 0.3s ease-in-out;
         }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 20px;
+        .container-button:active {
+            transform: scale(0.95);
         }
 
-        .container {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
+        .hover {
+            position: absolute;
             width: 100%;
-            max-width: 500px;
+            height: 100%;
+            z-index: 200;
         }
 
-        .button {
-            padding: 40px 60px;
-            font-size: 32px;
-            font-weight: bold;
-            color: white;
-            background: rgba(255, 255, 255, 0.2);
-            border: 3px solid white;
-            border-radius: 15px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-align: center;
-            text-decoration: none;
-            display: block;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        .bt-1 {
+            grid-area: bt-1;
         }
 
-        .button:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-5px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+        .bt-2 {
+            grid-area: bt-2;
         }
 
-        .button:active {
-            transform: translateY(-2px);
+        .bt-3 {
+            grid-area: bt-3;
         }
 
-        /* Mobile optimization */
-        @media (max-width: 600px) {
-            .button {
-                padding: 35px 50px;
-                font-size: 28px;
+        .bt-4 {
+            grid-area: bt-4;
+        }
+
+        .bt-5 {
+            grid-area: bt-5;
+        }
+
+        .bt-6 {
+            grid-area: bt-6;
+        }
+
+        .bt-1:hover ~ button {
+            transform: rotateX(15deg) rotateY(-15deg) rotateZ(0deg);
+            box-shadow: -2px -2px #18181888;
+        }
+
+        .bt-1:hover ~ button::after {
+            animation: shake 0.5s ease-in-out 0.3s;
+            text-shadow: -2px -2px #18181888;
+        }
+
+        .bt-3:hover ~ button {
+            transform: rotateX(15deg) rotateY(15deg) rotateZ(0deg);
+            box-shadow: 2px -2px #18181888;
+        }
+
+        .bt-3:hover ~ button::after {
+            animation: shake 0.5s ease-in-out 0.3s;
+            text-shadow: 2px -2px #18181888;
+        }
+
+        .bt-4:hover ~ button {
+            transform: rotateX(-15deg) rotateY(-15deg) rotateZ(0deg);
+            box-shadow: -2px 2px #18181888;
+        }
+
+        .bt-4:hover ~ button::after {
+            animation: shake 0.5s ease-in-out 0.3s;
+            text-shadow: -2px 2px #18181888;
+        }
+
+        .bt-6:hover ~ button {
+            transform: rotateX(-15deg) rotateY(15deg) rotateZ(0deg);
+            box-shadow: 2px 2px #18181888;
+        }
+
+        .bt-6:hover ~ button::after {
+            animation: shake 0.5s ease-in-out 0.3s;
+            text-shadow: 2px 2px #18181888;
+        }
+
+        .hover:hover ~ button::before {
+            background: transparent;
+        }
+
+        .hover:hover ~ button::after {
+            content: "Click";
+            top: -150%;
+            transform: translate(-50%, 0);
+            font-size: 34px;
+            color: #f19c2b;
+        }
+
+        button {
+            position: absolute;
+            padding: 0;
+            width: 135px;
+            height: 47px;
+            background: transparent;
+            font-size: 17px;
+            font-weight: 900;
+            border: 3px solid #f39923;
+            border-radius: 12px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        button::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 135px;
+            height: 47px;
+            background-color: #f5ae51;
+            border-radius: 12px;
+            transition: all 0.3s ease-in-out;
+            z-index: -1;
+        }
+
+        button::after {
+            content: "Demo 1";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 135px;
+            height: 47px;
+            background-color: transparent;
+            font-size: 17px;
+            font-weight: 900;
+            line-height: 47px;
+            color: #ffffff;
+            border: none;
+            border-radius: 12px;
+            transition: all 0.3s ease-in-out;
+            z-index: 2;
+        }
+
+        @keyframes shake {
+            0% {
+                left: 45%;
             }
-        }
 
-        @media (max-width: 400px) {
-            .button {
-                padding: 30px 40px;
-                font-size: 24px;
+            25% {
+                left: 54%;
+            }
+
+            50% {
+                left: 48%;
+            }
+
+            75% {
+                left: 52%;
+            }
+
+            100% {
+                left: 50%;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <a href="#demo1" class="button" onclick="handleClick('Demo 1')">Demo 1</a>
-        <a href="#demo2" class="button" onclick="handleClick('Demo 2')">Demo 2</a>
+    <!-- From Uiverse.io by MuhammadHasann -->
+    <div class="container-button">
+        <div class="hover bt-1"></div>
+        <div class="hover bt-2"></div>
+        <div class="hover bt-3"></div>
+        <div class="hover bt-4"></div>
+        <div class="hover bt-5"></div>
+        <div class="hover bt-6"></div>
+        <button></button>
     </div>
 
-    <script>
-        function handleClick(buttonName) {
-            alert('You clicked ' + buttonName + '!');
-        }
-    </script>
 </body>
 </html>
