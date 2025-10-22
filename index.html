@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Buttons</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .button {
+            padding: 40px 60px;
+            font-size: 32px;
+            font-weight: bold;
+            color: white;
+            background: rgba(255, 255, 255, 0.2);
+            border: 3px solid white;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .button:active {
+            transform: translateY(-2px);
+        }
+
+        /* Mobile optimization */
+        @media (max-width: 600px) {
+            .button {
+                padding: 35px 50px;
+                font-size: 28px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .button {
+                padding: 30px 40px;
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="#demo1" class="button" onclick="handleClick('Demo 1')">Demo 1</a>
+        <a href="#demo2" class="button" onclick="handleClick('Demo 2')">Demo 2</a>
+    </div>
+
+    <script>
+        function handleClick(buttonName) {
+            alert('You clicked ' + buttonName + '!');
+        }
+    </script>
+</body>
+</html>
